@@ -4,19 +4,35 @@
     <meta charset="UTF-8">
     <title>Nthabzadamasta's alien rescue organisation</title>
     <link rel="stylesheet" href="styles.css">
+    <style></style>
 </head>
 <body>
-    <header>
-        <h1>Welcome to My Website</h1>
-      <b>The purpose of this page is to connect alien's and royal hostages. Please feel free to have a look around my page and tell us how we can help you today!</b>
-    </header>
-    <main>
-        <p>Paragraph explaining further.</p>
-    </main>
+        <h1>Welcome to Nthabzadamasta's alien rescue organisation</h1>
+    <img src="photo.jpg" alt="picture of badge"></img>
+      <p>The purpose of this page is to connect alien's and royal hostages. Please feel free to have a look around my page and tell us how we can help you today!</p>
+    <h2>Contact</h2>
+    
+    <h3>Send a request</h3>
+    <button id="btn">Change heading color</button>
+<button id="resbtn">Reset</button>
+        <p></p>
+
     <footer>
         <p>&copy; 2025 Ancient Cheeze</p>
     </footer>
-    <script src="script.js"></script>
+    <script>
+      let btn = document.getElementById('btn');
+let resbtn = document.getElementById('resbtn');
+
+
+btn.addEventListener("click", function(){
+let heading = document.getElementById('heading');
+let body = document.getElementById('body');
+heading.textContent= "You clicked the button!";
+heading.style.color = "red";
+body.style.backgroundColor = "purple";
+resbtn.style.color = "green";
+    </script>
 </body>
 </html>
 
