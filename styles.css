@@ -53,18 +53,20 @@
     border-bottom: 100px solid var(--envelope-cover);
     border-left: 150px solid var(--envelope-cover);
 }
-.envelope > .letter{
+.envelope > .letter {
     position: absolute;
-    right: 20%;
+    left: 50%;
     bottom: 0;
-    width: 54%;
-    height: 80%;
+    transform: translateX(-50%); /* centers the letter */
+    width: 70%;                 /* slightly smaller letter */
+    height: 70%;                /* fits inside envelope */
     background: var(--primary);
-    text-align: center;
-    transition: all  1s ease-in-out;
+    transition: all 1s ease-in-out;
     box-shadow: 0 0 5px var(--shadow-color);
-    padding: 20px 10px;
+    padding: 12px 10px;
+    overflow: hidden;           /* hides any extra content */
 }
+
 .container .envelope-wrapper .envelope .letter .text{
     font-family: Arial, Helvetica, sans-serif;
     color: var(--txt-color);
