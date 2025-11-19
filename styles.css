@@ -113,3 +113,6 @@
     transform: rotate(45deg);
     transition-delay: 0.4s;
 }
+.envelope .letter {
+    overflow-y: auto;
+}
