@@ -50,7 +50,7 @@
     height: 0;
     border-top: 130px solid transparent;
     border-right: 150px solid var(--envelope-cover);
-    border-bottom: 100px solid var(--envelope-cover);
+    border-bottom: 160px solid var(--envelope-cover);
     border-left: 150px solid var(--envelope-cover);
 }
 .envelope > .letter {
