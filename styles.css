@@ -105,10 +105,11 @@
     z-index: 0;
 }
 .flap .envelope .letter {
-    bottom: 100px;
-    transform: scale(1.5);
+    bottom: 110px;        /* lifts up from envelope */
+    transform: translateX(-50%); /* keep centered */
     transition-delay: 1s;
 }
+
 .flap .heart{
     transform: rotate(45deg);
     transition-delay: 0.4s;
