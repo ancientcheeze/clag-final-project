@@ -110,6 +110,7 @@
     bottom: 110px;        /* lifts up from envelope */
     transform: translateX(-50%); /* keep centered */
     transition-delay: 1s;
+    height: 85%;
 }
 
 .flap .heart{
