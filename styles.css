@@ -121,3 +121,9 @@
 .envelope .letter {
     overflow-y: auto;
 }
+.envelope-wrapper.closing .envelope .letter {
+    bottom: 0;
+    height: 70%;
+    z-index: 1;
+    transition-delay: 0s;
+}
