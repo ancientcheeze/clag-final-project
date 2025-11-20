@@ -209,24 +209,32 @@ body {
 }
 /* Updated letter pop-out to prevent top cutoff and be fully responsive */
 /* Fully visible, responsive, pop-out letter */
+/* Fully visible, pop-out, centered letter */
 .flap .envelope .letter {
-    position: fixed;
-    top: 5vh;                /* 5% padding from top */
-    left: 50%;
-    transform: translateX(-50%) scale(0.95); /* scale for pop effect */
-    width: 90vw;
-    max-width: 400px;
-    height: auto;
-    max-height: 90vh;        /* letter can’t exceed 90% of viewport height */
-    z-index: 999;
+    position: fixed;              /* relative to viewport */
+    top: 50%;                     /* center vertically */
+    left: 50%;                    /* center horizontally */
+    transform: translate(-50%, -50%) scale(0.9); /* initial pop scale */
+    width: 90vw;                  /* almost full viewport width */
+    max-width: 400px;             /* limit for large screens */
+    max-height: 85vh;             /* never taller than viewport */
+    height: auto;                 /* adjust to content */
+    z-index: 999;                 /* above everything */
     padding: 20px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.3);
     border-radius: 8px;
-    opacity: 0;
-    overflow-y: auto;        /* allow scrolling only if letter content exceeds max-height */
+    opacity: 0;                   /* start transparent for pop */
+    overflow-y: auto;             /* scroll only if content exceeds max-height */
     animation: popLetter 0.8s forwards cubic-bezier(0.68, -0.55, 0.27, 1.55);
     animation-delay: 0.5s;
 }
+
+/* Keyframes for pop + fade */
+@keyframes popLetter {
+    0% {
+        opacity: 0;
+        transform: translate(-50
+
 
 /* Keyframes for pop + fade */
 @keyframes popLetter {
