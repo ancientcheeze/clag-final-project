@@ -108,23 +108,33 @@
     z-index: 0;
 }
 .flap .envelope .letter {
-    bottom: 90px;        /* lifts up from envelope */
-    transform: translateX(-50%); /* keep centered */
-    z-index: 10;
-    transition-delay: 1s;
-    height: 150%;
+    bottom: 20px;       /* slightly above the envelope */
+    height: 90%;        /* almost full envelope-wrapper height */
+    width: 90%;         /* make it wider */
+    z-index: 10;        /* bring to front */
+    transition-delay: 0.5s;
+    overflow-y: visible; /* remove scrolling */
 }
+
 
 .flap .heart{
     transform: rotate(45deg);
     transition-delay: 0.4s;
 }
-.envelope .letter {
-    overflow-y: auto;
+.envelope > .letter {
+    bottom: 0;
+    width: 70%;
+    height: 70%;
+    overflow-y: hidden; /* hide scroll initially */
 }
+
 .envelope-wrapper.closing .envelope .letter {
     bottom: 0;
     height: 70%;
     z-index: 1;
     transition-delay: 0s;
+}
+.flap .envelope .letter .text {
+    max-height: none;  /* remove restrictions */
+    font-size: 12px;   /* increase readability */
 }
