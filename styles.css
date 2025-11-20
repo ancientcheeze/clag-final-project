@@ -82,7 +82,7 @@ body {
 
 .letter .text {
     font-size: 0.9rem;
-    line-height: 1;
+    line-height: 1.5;
     color: var(--txt-color);
 }
 
