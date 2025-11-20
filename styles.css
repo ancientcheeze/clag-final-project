@@ -100,7 +100,7 @@ body {
 }
 
 /* OPENED STATE */
-.envelope-wrapper.flap .envelope .letter {
+.envelope-wrapper.flap .letter {
     position: fixed;
     top: 50%;
     left: 50%;
