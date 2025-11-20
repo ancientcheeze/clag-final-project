@@ -30,11 +30,11 @@ body {
     height: 230px;
     background: var(--bg-envelope-color);
     box-shadow: 0 0 40px var(--shadow-color);
-    overflow: visible; /* so letter can pop out */
+    overflow: visible;
+    cursor: pointer;
     transition: box-shadow 0.5s ease;
 }
 
-/* Envelope flap */
 .envelope::before {
     content: "";
     position: absolute;
@@ -49,7 +49,6 @@ body {
     z-index: 2;
 }
 
-/* Envelope body */
 .envelope::after {
     content: "";
     position: absolute;
@@ -63,31 +62,30 @@ body {
     z-index: 1;
 }
 
-/* Letter */
 .letter {
     position: absolute;
     left: 50%;
     bottom: 0;
-    transform: translateX(-50%) translateY(0) scale(1);
+    transform: translateX(-50%) translateY(50%) scale(0.95);
     width: 70%;
-    height: 120%;
+    height: 70%;
     background: var(--primary);
     box-shadow: 0 0 5px var(--shadow-color);
     border-radius: 6px;
     padding: 12px;
-    overflow-y: auto;
+    overflow-y: hidden;
     z-index: 3;
-    transition: transform 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55), width 0.8s, height 0.8s;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.6s ease-in-out;
 }
 
-/* Letter text */
 .letter .text {
     font-size: 0.9rem;
     line-height: 1.5;
     color: var(--txt-color);
 }
 
-/* Heart */
 .heart {
     position: absolute;
     top: 50%;
@@ -100,61 +98,27 @@ body {
     z-index: 4;
     transition: transform 0.5s;
 }
-.heart::before,
-.heart::after {
-    content: "";
-    position: absolute;
-    width: 15px;
-    height: 15px;
-}
-/* Pop-out letter fully visible over envelope */
-.flap .envelope .letter {
-    position: fixed;            /* detach from envelope and overlay viewport */
-    top: 50%;                   /* center vertically */
-    left: 50%;                  /* center horizontally */
-    transform: translate(-50%, -50%) scale(1); /* perfect center */
-    width: 90vw;                /* almost full width of viewport */
-    max-width: 500px;           /* optional max width */
-    height: auto;               /* height fits content */
-    max-height: 90vh;           /* never taller than viewport */
-    z-index: 999;               /* above everything */
+
+/* OPENED STATE */
+.envelope-wrapper.flap .envelope .letter {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1);
+    width: 90vw;
+    max-width: 500px;
+    height: auto;
+    max-height: 90vh;
     padding: 20px;
-    overflow-y: auto;           /* scroll only if letter content exceeds max-height */
+    overflow-y: auto;
+    opacity: 1;
+    pointer-events: auto;
     box-shadow: 0 5px 20px rgba(0,0,0,0.4);
     border-radius: 10px;
-    transition: all 0.6s ease-in-out;
+    z-index: 999;
 }
 
-/* When closing, reset to envelope */
-.envelope-wrapper.closing .envelope .letter {
-    position: absolute;         /* back inside envelope */
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%) scale(1);
-    width: 70%;
-    height: 70%;
-    max-height: none;
-    overflow: hidden;
-    z-index: 3;
-    padding: 12px;
-}
-/* Hide letter inside envelope by default */
-.envelope .letter {
-    transform: translateX(-50%) translateY(50%) scale(0.95); /* slightly down inside envelope */
-    opacity: 0;                                           /* fully hidden */
-    pointer-events: none;                                 /* prevent interaction until opened */
-}
-/* Letter resets back into envelope when closing */
-.envelope-wrapper.closing .envelope .letter {
-    position: absolute;       /* back inside envelope */
-    bottom: 0;                /* aligns to envelope bottom */
-    left: 50%;                /* center horizontally */
-    transform: translateX(-50%) scale(1); /* reset transform */
-    width: 70%;               /* original envelope width */
-    height: 70%;              /* original envelope height */
-    max-height: none;
-    overflow: hidden;         /* hide scroll */
-    z-index: 3;               /* below heart and flap */
-    padding: 12px;            /* original padding */
-    transition: all 0.6s ease-in-out; /* smooth animation */
+/* OPTIONAL: animate flap rotation */
+.envelope-wrapper.flap .envelope::before {
+    transform: rotateX(180deg);
 }
