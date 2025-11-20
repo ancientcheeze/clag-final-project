@@ -138,3 +138,9 @@ body {
     z-index: 3;
     padding: 12px;
 }
+/* Hide letter inside envelope by default */
+.envelope .letter {
+    transform: translateX(-50%) translateY(50%) scale(0.95); /* slightly down inside envelope */
+    opacity: 0;                                           /* fully hidden */
+    pointer-events: none;                                 /* prevent interaction until opened */
+}
