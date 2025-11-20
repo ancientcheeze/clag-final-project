@@ -177,3 +177,33 @@ body {
         padding: 15px;
     }
 }
+/* Letter pop-out scale + fade effect */
+.flap .envelope .letter {
+    opacity: 0;
+    transform: translateX(-50%) scale(0.8); /* start smaller & centered */
+    animation: popLetter 0.8s forwards cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    animation-delay: 0.5s; /* wait for flap to open */
+}
+
+/* Keyframes for popping effect */
+@keyframes popLetter {
+    0% {
+        opacity: 0;
+        transform: translateX(-50%) scale(0.8);
+    }
+    60% {
+        opacity: 1;
+        transform: translateX(-50%) scale(1.05);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(-50%) scale(1);
+    }
+}
+
+/* Ensure letter resets when closing */
+.envelope-wrapper.closing .envelope .letter {
+    animation: none;
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+}
