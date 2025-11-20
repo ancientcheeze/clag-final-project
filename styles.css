@@ -207,3 +207,57 @@ body {
     opacity: 1;
     transform: translateX(-50%) scale(1);
 }
+/* Updated letter pop-out to prevent top cutoff and be fully responsive */
+.flap .envelope .letter {
+    position: fixed;            /* position relative to viewport */
+    top: 50%;                   /* center vertically */
+    left: 50%;                  /* center horizontally */
+    transform: translate(-50%, -50%) scale(0.8); /* initial scale for pop effect */
+    width: 90vw;
+    max-width: 400px;
+    height: 80vh;
+    z-index: 999;               /* above everything */
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    border-radius: 8px;
+    opacity: 0;                 /* start transparent for pop */
+    overflow-y: visible;
+    animation: popLetter 0.8s forwards cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    animation-delay: 0.5s;
+}
+
+/* Keyframes for pop + fade animation */
+@keyframes popLetter {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.8);
+    }
+    60% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.05);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+/* Reset when closing */
+.envelope-wrapper.closing .envelope .letter {
+    animation: none;
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+/* Responsive adjustments for very small screens */
+@media (max-height: 600px), (max-width: 400px) {
+    .flap .envelope .letter {
+        height: 70vh;      /* shrink height */
+        width: 85vw;       /* shrink width */
+        padding: 15px;     /* smaller padding for small screens */
+    }
+    .flap .envelope .letter .text {
+        font-size: 0.9rem; /* smaller font */
+        line-height: 1.3;
+    }
+}
