@@ -64,7 +64,8 @@
     transition: all 1s ease-in-out;
     box-shadow: 0 0 5px var(--shadow-color);
     padding: 12px 10px;
-    overflow: auto;   /* hides any extra content */
+    overflow-x: hidden;
+    overflow-y: auto;   /* hides any extra content */
 }
 
 .container .envelope-wrapper .envelope .letter .text{
