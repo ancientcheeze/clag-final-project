@@ -110,6 +110,7 @@
 .flap .envelope .letter {
     bottom: 90px;        /* lifts up from envelope */
     transform: translateX(-50%); /* keep centered */
+    z-index: 10;
     transition-delay: 1s;
     height: 150%;
 }
