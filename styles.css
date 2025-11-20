@@ -144,3 +144,17 @@ body {
     opacity: 0;                                           /* fully hidden */
     pointer-events: none;                                 /* prevent interaction until opened */
 }
+/* Letter resets back into envelope when closing */
+.envelope-wrapper.closing .envelope .letter {
+    position: absolute;       /* back inside envelope */
+    bottom: 0;                /* aligns to envelope bottom */
+    left: 50%;                /* center horizontally */
+    transform: translateX(-50%) scale(1); /* reset transform */
+    width: 70%;               /* original envelope width */
+    height: 70%;              /* original envelope height */
+    max-height: none;
+    overflow: hidden;         /* hide scroll */
+    z-index: 3;               /* below heart and flap */
+    padding: 12px;            /* original padding */
+    transition: all 0.6s ease-in-out; /* smooth animation */
+}
