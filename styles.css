@@ -208,23 +208,59 @@ body {
     transform: translateX(-50%) scale(1);
 }
 /* Updated letter pop-out to prevent top cutoff and be fully responsive */
+/* Fully visible, responsive, pop-out letter */
 .flap .envelope .letter {
-    position: fixed;            /* position relative to viewport */
-    top: 50%;                   /* center vertically */
-    left: 50%;                  /* center horizontally */
-    transform: translate(-50%, -50%) scale(0.8); /* initial scale for pop effect */
+    position: fixed;
+    top: 5vh;                /* 5% padding from top */
+    left: 50%;
+    transform: translateX(-50%) scale(0.95); /* scale for pop effect */
     width: 90vw;
     max-width: 400px;
-    height: 80vh;
-    z-index: 999;               /* above everything */
+    height: auto;
+    max-height: 90vh;        /* letter can’t exceed 90% of viewport height */
+    z-index: 999;
     padding: 20px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.3);
     border-radius: 8px;
-    opacity: 0;                 /* start transparent for pop */
-    overflow-y: visible;
+    opacity: 0;
+    overflow-y: auto;        /* allow scrolling only if letter content exceeds max-height */
     animation: popLetter 0.8s forwards cubic-bezier(0.68, -0.55, 0.27, 1.55);
     animation-delay: 0.5s;
 }
+
+/* Keyframes for pop + fade */
+@keyframes popLetter {
+    0% {
+        opacity: 0;
+        transform: translateX(-50%) scale(0.8);
+    }
+    60% {
+        opacity: 1;
+        transform: translateX(-50%) scale(1.05);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(-50%) scale(1);
+    }
+}
+
+/* Reset when closing */
+.envelope-wrapper.closing .envelope .letter {
+    animation: none;
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+}
+
+/* Responsive adjustments for very small screens */
+@media (max-height: 600px), (max-width: 400px) {
+    .flap .envelope .letter {
+        max-height: 85vh;     /* slightly smaller on very small screens */
+        width: 95vw;
+        padding: 15px;
+        font-size: 0.9rem;
+    }
+}
+
 
 /* Keyframes for pop + fade animation */
 @keyframes popLetter {
